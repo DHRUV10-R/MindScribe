@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AiOutlineMenu } from "react-icons/ai";
 import { IoCloseSharp } from "react-icons/io5";
-import { useAuth } from "../context/AuthProvider";
+import { useAuth } from "../Context/AuthProvider";
 import axios from "axios";
 import toast from "react-hot-toast";
 

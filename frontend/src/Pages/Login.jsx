@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
-import { useAuth } from "../context/AuthProvider";
+import { useAuth } from "../Context/AuthProvider";
 
 function Login() {
   const { isAuthenticated, setIsAuthenticated, setProfile } = useAuth();

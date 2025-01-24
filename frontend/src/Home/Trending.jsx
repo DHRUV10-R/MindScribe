@@ -1,5 +1,5 @@
 import React from "react";
-import { useAuth } from "../context/AuthProvider";
+import { useAuth } from "../Context/AuthProvider";
 import { Link } from "react-router-dom";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";

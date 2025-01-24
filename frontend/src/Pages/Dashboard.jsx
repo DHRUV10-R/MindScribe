@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { useAuth } from "../context/AuthProvider";
-import Sidebar from "../Dashboard/Sidebar";
-import MyProfile from "../Dashboard/MyProfile";
+import { useAuth } from "../Context/AuthProvider";
+import Sidebar from "../dashboard/Sidebar";
+import MyProfile from "../dashboard/MyProfile";
 import MyBlogs from "../Dashboard/MyBlogs";
 import CreateBlog from "../Dashboard/CreateBlog";
 import UpdateBlog from "../Dashboard/UpdateBlog";

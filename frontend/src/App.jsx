@@ -4,7 +4,7 @@ import Home from "../src/components/Home";
 import Footer from "../src/components/Footer";
 import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 
-import { useAuth } from "./context/AuthProvider";
+import { useAuth } from "G:/TYCSS6/S6blogwebsite/Blogwebsite/frontend/src/Context/AutoProvider.jsx";
 import { Toaster } from "react-hot-toast";
 
 import NotFound from "./pages/NotFound";
