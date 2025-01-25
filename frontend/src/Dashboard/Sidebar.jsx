@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useAuth } from "../Context/AuthProvider";
+import { useAuth } from "G:/TYCSS6/S6blogwebsite/Blogwebsite/frontend/src/Context/AutoProvider.jsx";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { CiMenuBurger } from "react-icons/ci";

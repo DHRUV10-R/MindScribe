@@ -1,5 +1,5 @@
 import React from "react";
-import { useAuth } from "../Context/AuthProvider";
+import { useAuth } from "G:/TYCSS6/S6blogwebsite/Blogwebsite/frontend/src/Context/AutoProvider.jsx";
 import { Link } from "react-router-dom";
 
 function Devotional() {

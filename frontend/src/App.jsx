@@ -1,13 +1,13 @@
 import React from "react";
 
-import Home from "../src/components/Home";
-import Footer from "../src/components/Footer";
+import Home from "G:/TYCSS6/S6blogwebsite/Blogwebsite/frontend/src/components/Home.jsx";
+import Footer from "G:/TYCSS6/S6blogwebsite/Blogwebsite/frontend/src/components/Footer.jsx";
 import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 
 import { useAuth } from "G:/TYCSS6/S6blogwebsite/Blogwebsite/frontend/src/Context/AutoProvider.jsx";
 import { Toaster } from "react-hot-toast";
 
-import NotFound from "./pages/NotFound";
+import NotFound from "./Pages/NotFound";
 function App() {
   const location = useLocation();
   const hideNavbarFooter = ["/dashboard", "/login", "/register"].includes(
