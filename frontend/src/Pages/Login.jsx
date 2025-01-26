@@ -2,7 +2,8 @@ import axios from "axios";
 import React, { useState } from "react";
 import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
-import { useAuth } from "G:/TYCSS6/S6blogwebsite/Blogwebsite/frontend/src/Context/AuthProvider.jsx";
+import { useAuth } from "../Context/AuthProvider";
+
 
 function Login() {
   const { isAuthenticated, setIsAuthenticated, setProfile } = useAuth();

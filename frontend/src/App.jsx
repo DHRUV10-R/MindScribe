@@ -1,32 +1,32 @@
 import React from "react";
-
-import Home from "G:/TYCSS6/S6blogwebsite/Blogwebsite/frontend/src/components/Home.jsx";
-import Footer from "G:/TYCSS6/S6blogwebsite/Blogwebsite/frontend/src/components/Footer.jsx";
 import { Navigate, Route, Routes, useLocation } from "react-router-dom";
-
-import { useAuth } from "G:/TYCSS6/S6blogwebsite/Blogwebsite/frontend/src/Context/AutoProvider.jsx";
 import { Toaster } from "react-hot-toast";
+import { useAuth } from "./Context/AutoProvider";
 
-//import NotFound from "./Pages/NotFound";
+import Home from "./components/Home";
+import Footer from "./components/Footer";
+import Navbar from "./components/NavBar";
+import About from "./Pages/About";
+import Blogs from "./Pages/Blogs";
+import Contact from "./Pages/Contact";
+import Creators from "./Pages/Creators";
+import Login from "./Pages/Login";
+import Register from "./Pages/Register";
+import Dashboard from "./Pages/Dashboard";
+import Detail from "./Pages/Detail";
+import NotFound from "./Pages/NotFound";
+
 function App() {
   const location = useLocation();
-  const hideNavbarFooter = ["/dashboard", "/login", "/register"].includes(
-    location.pathname
-  );
-  const { blogs, isAuthenticated } = useAuth();
-  let token = localStorage.getItem("jwt"); // Retrieve the token directly from the localStorage to maininting the routes protect (Go to login.jsx)
-  console.log(blogs);
-  console.log(isAuthenticated); // it is not using because every page refresh it was redirected to /login
+  const hideNavbarFooter = ["/dashboard", "/login", "/register"].includes(location.pathname);
+  const { isAuthenticated } = useAuth();
+  const token = localStorage.getItem("jwt");
 
   return (
     <div>
       {!hideNavbarFooter && <Navbar />}
       <Routes>
-        <Route
-          exact
-          path="/"
-          element={token ? <Home /> : <Navigate to={"/login"} />}
-        />
+        <Route exact path="/" element={token ? <Home /> : <Navigate to="/login" />} />
         <Route exact path="/blogs" element={<Blogs />} />
         <Route exact path="/about" element={<About />} />
         <Route exact path="/contact" element={<Contact />} />
@@ -34,14 +34,7 @@ function App() {
         <Route exact path="/login" element={<Login />} />
         <Route exact path="/register" element={<Register />} />
         <Route exact path="/dashboard" element={<Dashboard />} />
-
-        {/* Single page route */}
         <Route exact path="/blog/:id" element={<Detail />} />
-
-        {/* Update page route */}
-        <Route exact path="/blog/update/:id" element={<UpdateBlog />} />
-
-        {/* Universal route */}
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Toaster />
