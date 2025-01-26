@@ -7,7 +7,7 @@ import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import { useAuth } from "G:/TYCSS6/S6blogwebsite/Blogwebsite/frontend/src/Context/AutoProvider.jsx";
 import { Toaster } from "react-hot-toast";
 
-import NotFound from "./Pages/NotFound";
+//import NotFound from "./Pages/NotFound";
 function App() {
   const location = useLocation();
   const hideNavbarFooter = ["/dashboard", "/login", "/register"].includes(

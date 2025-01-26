@@ -1,13 +1,12 @@
-import { createRoot } from "react-dom/client";
-import App from "./App.jsx";
-import "./index.css";
+import React from "react";
+import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
+import App from "./App";
+import "./index.css"; // Optional: Add global styles here.
 
-import { AuthProvider } from "G:/TYCSS6/S6blogwebsite/Blogwebsite/frontend/src/Context/AutoProvider.jsx";
-createRoot(document.getElementById("root")).render(
+ReactDOM.render(
   <BrowserRouter>
-    <AuthProvider>
-      <App />
-    </AuthProvider>
-  </BrowserRouter>
+    <App />
+  </BrowserRouter>,
+  document.getElementById("root")
 );
