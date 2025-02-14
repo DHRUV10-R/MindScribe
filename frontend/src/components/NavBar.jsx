@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AiOutlineMenu } from "react-icons/ai";
 import { IoCloseSharp } from "react-icons/io5";
-import { useAuth } from "G:/TYCSS6/S6blogwebsite/Blogwebsite/frontend/src/Context/AutoProvider.jsx";
+import { useAuth } from "../context/AuthProvider";
 import axios from "axios";
 import toast from "react-hot-toast";
 
@@ -17,7 +17,7 @@ function Navbar() {
     e.preventDefault();
     try {
       const { data } = await axios.get(
-        "",//http://localhost:4001/api/users/logout
+        "http://localhost:4001/api/users/logout",
         { withCredentials: true }
       );
       console.log(data);

@@ -1,12 +1,13 @@
-import React from "react";
-import ReactDOM from "react-dom";
+import { createRoot } from "react-dom/client";
+import App from "./App.jsx";
+import "./index.css";
 import { BrowserRouter } from "react-router-dom";
-import App from "./App";
-import "./index.css"; // Optional: Add global styles here.
+import { AuthProvider } from "./context/AuthProvider.jsx";
 
-ReactDOM.render(
+createRoot(document.getElementById("root")).render(
   <BrowserRouter>
-    <App />
-  </BrowserRouter>,
-  document.getElementById("root")
+    <AuthProvider>
+      <App />
+    </AuthProvider>
+  </BrowserRouter>
 );

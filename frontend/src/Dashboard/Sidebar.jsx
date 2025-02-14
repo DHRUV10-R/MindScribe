@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useAuth } from "G:/TYCSS6/S6blogwebsite/Blogwebsite/frontend/src/Context/AutoProvider.jsx";
+import { useAuth } from "../context/AuthProvider";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { CiMenuBurger } from "react-icons/ci";
@@ -24,7 +24,7 @@ function Sidebar({ setComponent }) {
     e.preventDefault();
     try {
       const { data } = await axios.get(
-        "http://localhost:5173/api/users/logout",
+        "http://localhost:4001/api/users/logout",
         { withCredentials: true }
       );
       toast.success(data.message);

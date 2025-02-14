@@ -1,5 +1,5 @@
 import React from "react";
-import { useAuth } from "G:/TYCSS6/S6blogwebsite/Blogwebsite/frontend/src/Context/AutoProvider.jsx";
+import { useAuth } from "../context/AuthProvider";
 import { Link } from "react-router-dom";
 
 function Blogs() {

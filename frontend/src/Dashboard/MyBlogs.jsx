@@ -9,7 +9,7 @@ function MyBlogs() {
     const fetchMyBlogs = async () => {
       try {
         const { data } = await axios.get(
-          "http://localhost:5173/api/blogs/my-blog",//
+          "http://localhost:4001/api/blogs/my-blog",
           { withCredentials: true }
         );
         console.log(data);
@@ -23,7 +23,7 @@ function MyBlogs() {
 
   const handleDelete = async (id) => {
     await axios
-      .delete(`http://localhost:5173/api/blogs/delete/${id}`, {
+      .delete(`http://localhost:4001/api/blogs/delete/${id}`, {
         withCredentials: true,
       })
       .then((res) => {

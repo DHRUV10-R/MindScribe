@@ -2,8 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
-import { useAuth } from "../Context/AuthProvider";
-
+import { useAuth } from "../context/AuthProvider";
 
 function Register() {
   const { isAuthenticated, setIsAuthenticated, setProfile } = useAuth();
@@ -67,9 +66,7 @@ function Register() {
       navigateTo("/");
     } catch (error) {
       console.log(error);
-      toast.error(
-        error.response.data.message || "Please fill the required fields"
-      );
+      
     }
   };
 

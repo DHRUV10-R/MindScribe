@@ -1,12 +1,10 @@
 import React, { useState } from "react";
-import { useAuth } from "G:/TYCSS6/S6blogwebsite/Blogwebsite/frontend/src/Context/AutoProvider.jsx";
-import Sidebar from "G:/TYCSS6/S6blogwebsite/Blogwebsite/frontend/src/dashboard/Sidebar";
-import MyBlogs from "G:/TYCSS6/S6blogwebsite/Blogwebsite/frontend/src/Dashboard/MyBlogs";
-import CreateBlog from "G:/TYCSS6/S6blogwebsite/Blogwebsite/frontend/src/Dashboard/CreateBlog";
-import UpdateBlog from "G:/TYCSS6/S6blogwebsite/Blogwebsite/frontend/src/Dashboard/UpdateBlog";
-import MyProfile from "G:/TYCSS6/S6blogwebsite/Blogwebsite/frontend/src/dashboard/MyProfile";
-
-
+import { useAuth } from "../context/AuthProvider";
+import Sidebar from "../dashboard/Sidebar";
+import MyProfile from "../dashboard/MyProfile";
+import MyBlogs from "../dashboard/MyBlogs";
+import CreateBlog from "../dashboard/CreateBlog";
+import UpdateBlog from "../dashboard/UpdateBlog";
 import { Navigate } from "react-router-dom";
 function Dashboard() {
   const { profile, isAuthenticated } = useAuth();

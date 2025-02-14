@@ -5,17 +5,17 @@ import createTokenAndSaveCookies from "../jwt/AuthToken.js";
 
 export const register = async (req, res) => {
   try {
-    // if (!req.files || Object.keys(req.files).length === 0) {
-    //   return res.status(400).json({ message: "User photo is required" });
-    // }
-    // const { photo } = req.files;
-    // const allowedFormats = ["image/jpeg", "image/png", "image/webp"];
-    // if (!allowedFormats.includes(photo.mimetype)) {
-    //   return res.status(400).json({
-    //     message: "Invalid photo format. Only jpg and png are allowed",
-    //   });
-    // }
-     const { email, name, password, phone, education, role } = req.body;
+    if (!req.files || Object.keys(req.files).length === 0) {
+      return res.status(400).json({ message: "User photo is required" });
+    }
+    const { photo } = req.files;
+    const allowedFormats = ["image/jpeg", "image/png", "image/webp"];
+    if (!allowedFormats.includes(photo.mimetype)) {
+      return res.status(400).json({
+        message: "Invalid photo format. Only jpg and png are allowed",
+      });
+    }
+    const { email, name, password, phone, education, role } = req.body;
     if (
       !email ||
       !name ||
@@ -76,7 +76,7 @@ export const register = async (req, res) => {
   }
 };
 
-export const login = async (req, res) => {
+export const login = async (req, res) => { 
   const { email, password, role } = req.body;
   try {
     if (!email || !password || !role) {
@@ -132,3 +132,4 @@ export const getAdmins = async (req, res) => {
   const admins = await User.find({ role: "admin" });
   res.status(200).json({ admins });
 };
+//Welcome@post_dhruv10
