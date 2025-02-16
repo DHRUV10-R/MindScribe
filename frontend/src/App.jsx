@@ -14,25 +14,28 @@ import { useAuth } from "./context/AuthProvider";
 import { Toaster } from "react-hot-toast";
 import UpdateBlog from "./dashboard/UpdateBlog";
 import Detail from "./pages/Detail";
-//import NotFound from "./pages/NotFound";
+import BenefitsPage from "./pages/benefits";
+
 function App() {
   const location = useLocation();
-  const hideNavbarFooter = ["/dashboard", "/login", "/register"].includes(
+  const hideNavbarFooter = ["/dashboard", "/login", "/register", "/benefits"].includes(
     location.pathname
-  );
+  ); // Now also hides Navbar & Footer on Benefits page
+
   const { blogs, isAuthenticated } = useAuth();
-  let token = localStorage.getItem("jwt"); // Retrieve the token directly from the localStorage to maininting the routes protect (Go to login.jsx)
+  let token = localStorage.getItem("jwt"); // Retrieve the token from localStorage
+
   console.log(blogs);
-  console.log(isAuthenticated); // it is not using because every page refresh it was redirected to /login
+  console.log(isAuthenticated);
 
   return (
     <div>
       {!hideNavbarFooter && <Navbar />}
       <Routes>
-        <Route
-          exact
-          path="/"
-          element={token ? <Home /> : <Navigate to={"/login"} />}
+        <Route 
+          exact 
+          path="/" 
+          element={token ? <Home /> : <Navigate to={"/benefits"} />} 
         />
         <Route exact path="/blogs" element={<Blogs />} />
         <Route exact path="/about" element={<About />} />
@@ -41,14 +44,9 @@ function App() {
         <Route exact path="/login" element={<Login />} />
         <Route exact path="/register" element={<Register />} />
         <Route exact path="/dashboard" element={<Dashboard />} />
-
-        {/* Single page route */}
+        <Route exact path="/benefits" element={<BenefitsPage />} />
         <Route exact path="/blog/:id" element={<Detail />} />
-
-        {/* Update page route */}
         <Route exact path="/blog/update/:id" element={<UpdateBlog />} />
-
-        {/* Universal route */}
       </Routes>
       <Toaster />
       {!hideNavbarFooter && <Footer />}

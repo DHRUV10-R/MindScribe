@@ -151,3 +151,54 @@ export const updateBlog = async (req, res) => {
   }
   res.status(200).json(updatedBlog);
 };
+
+export const likeBlog = async (req, res) => {
+  try {
+    const blog = await Blog.findById(req.params.id);
+    if (!blog) return res.status(404).json({ message: "Blog not found" });
+
+    const userId = req.user._id;
+    const likedIndex = blog.likes.indexOf(userId);
+
+    if (likedIndex === -1) {
+      blog.likes.push(userId);
+    } else {
+      blog.likes.splice(likedIndex, 1);
+    }
+
+    await blog.save();
+    res.json({ success: true, likes: blog.likes.length });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+export const commentOnBlog = async (req, res) => {
+  try {
+    const { text } = req.body;
+    if (!text.trim()) return res.status(400).json({ message: "Comment cannot be empty" });
+
+    const blog = await Blog.findById(req.params.id);
+    if (!blog) return res.status(404).json({ message: "Blog not found" });
+
+    const comment = { user: req.user._id, text };
+    blog.comments.push(comment);
+    await blog.save();
+
+    res.json({ success: true, comment });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+// 🆕 Get Comments for a Blog
+export const getComments = async (req, res) => {
+  try {
+    const blog = await Blog.findById(req.params.id).populate("comments.user", "name");
+    if (!blog) return res.status(404).json({ message: "Blog not found" });
+
+    res.json(blog.comments);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};

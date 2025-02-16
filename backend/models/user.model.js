@@ -48,5 +48,31 @@ const userSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
+  createdBy: {
+    type: mongoose.Schema.ObjectId,
+    ref: "User",
+  },
+  likes: [
+    {
+      type: mongoose.Schema.ObjectId,
+      ref: "User",
+    }
+  ],
+  comments: [
+    {
+      user: {
+        type: mongoose.Schema.ObjectId,
+        ref: "User",
+      },
+      text: {
+        type: String,
+        required: true,
+      },
+      createdAt: {
+        type: Date,
+        default: Date.now,
+      },
+    }
+    ]
 });
 export const User = mongoose.model("User", userSchema);

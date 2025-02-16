@@ -27,9 +27,8 @@ function Login() {
         }
       );
       console.log(data);
-      // Store the token in localStorage
-      localStorage.setItem("jwt", data.token); // storing token in localStorage so that if user refreshed the page it will not redirect again in login
-      toast.success(data.message || "User Logined successfully", {
+      localStorage.setItem("jwt", data.token);
+      toast.success(data.message || "User Logged in successfully", {
         duration: 3000,
       });
       setProfile(data);
@@ -51,7 +50,7 @@ function Login() {
 
   return (
     <div>
-      <div className="min-h-screen flex items-center justify-center bg-gray-100">
+      <div className="min-h-screen flex items-center justify-center bg-gray-100 relative">
         <div className="w-full max-w-md bg-white shadow-md rounded-lg p-8">
           <form onSubmit={handleLogin}>
             <div className="font-semibold text-xl items-center text-center">
@@ -74,7 +73,7 @@ function Login() {
                 placeholder="Your Email Address"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full p-2  border rounded-md"
+                className="w-full p-2 border rounded-md"
               />
             </div>
 
@@ -84,7 +83,7 @@ function Login() {
                 placeholder="Your Password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full p-2  border rounded-md"
+                className="w-full p-2 border rounded-md"
               />
             </div>
 
@@ -102,6 +101,13 @@ function Login() {
             </button>
           </form>
         </div>
+        {/* New Button in Bottom Right Corner */}
+        <button
+          onClick={() => navigateTo("/benefits")}
+          className="fixed bottom-4 right-4 p-3 bg-green-500 hover:bg-green-700 text-white rounded-full shadow-lg"
+        >
+          Why Login?
+        </button>
       </div>
     </div>
   );

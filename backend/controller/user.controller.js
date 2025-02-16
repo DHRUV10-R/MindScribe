@@ -133,3 +133,38 @@ export const getAdmins = async (req, res) => {
   res.status(200).json({ admins });
 };
 //Welcome@post_dhruv10
+
+export const likeBlog = async (req, res) => {
+  try {
+    const blog = await Blog.findById(req.params.id);
+    if (!blog) return res.status(404).json({ message: "Blog not found" });
+
+    const userIndex = blog.likes.indexOf(req.user._id);
+    if (userIndex === -1) {
+      blog.likes.push(req.user._id);
+    } else {
+      blog.likes.splice(userIndex, 1);
+    }
+
+    await blog.save();
+    res.status(200).json({ message: "Blog like status updated", likes: blog.likes.length });
+  } catch (error) {
+    res.status(500).json({ message: "Server error", error });
+  }
+};
+
+// Comment on a Blog
+export const commentOnBlog = async (req, res) => {
+  try {
+    const blog = await Blog.findById(req.params.id);
+    if (!blog) return res.status(404).json({ message: "Blog not found" });
+
+    const newComment = { user: req.user._id, text: req.body.text };
+    blog.comments.push(newComment);
+
+    await blog.save();
+    res.status(201).json({ message: "Comment added", comments: blog.comments });
+  } catch (error) {
+    res.status(500).json({ message: "Server error", error });
+  }
+};
