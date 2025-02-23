@@ -1,0 +1,12 @@
+{
+  "name":"kumar",
+  "email":"kumar@gmail.com",
+  "phone":"98889752",
+  "password":"kumar0001",
+  "role":"admin",
+  "education":"MCA",
+  "photo":"football.jpg",
+  "photoPreview":"football.jpg"
+   
+}
+for user register

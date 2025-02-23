@@ -20,13 +20,10 @@ router.get("/all-blogs", getAllBlogs);
 router.get("/single-blog/:id", isAuthenticated, getSingleBlogs);
 router.get("/my-blog", isAuthenticated, isAdmin("admin"), getMyBlogs);
 router.put("/update/:id", isAuthenticated, isAdmin("admin"), updateBlog);
-
 // 🆕 Like/Unlike a Blog
 router.post("/:id/like", isAuthenticated, likeBlog);
-
 // 🆕 Add a Comment
 router.post("/:id/comment", isAuthenticated, commentOnBlog);
-
 // 🆕 Fetch Comments
 router.get("/:id/comments", getComments);
 
