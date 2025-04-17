@@ -3,7 +3,7 @@ import Navbar from "../src/components/Navbar";
 import Home from "../src/components/Home";
 import Footer from "../src/components/Footer";
 import { Navigate, Route, Routes, useLocation } from "react-router-dom";
-
+import Blogs from "../src/pages/Blogs";
 import About from "../src/pages/About";
 import Contact from "../src/pages/Contact";
 import Login from "../src/pages/Login";
@@ -15,17 +15,21 @@ import { Toaster } from "react-hot-toast";
 import UpdateBlog from "./dashboard/UpdateBlog";
 import Detail from "./pages/Detail";
 import BenefitsPage from "./pages/benefits";
-import Chatbot from "./components/ChatBot"; // Import chatbot component
+import Notespage from "./Pages/Notespage";
+
+
 
 function App() {
   const location = useLocation();
   const hideNavbarFooter = ["/dashboard", "/login", "/register", "/benefits"].includes(
     location.pathname
-  );
+  ); // Now also hides Navbar & Footer on Benefits page
 
-  const { isAuthenticated } = useAuth(); // Check if the user is logged in
-
+  const { blogs, isAuthenticated } = useAuth();
   let token = localStorage.getItem("jwt"); // Retrieve the token from localStorage
+
+  console.log(blogs);
+  console.log(isAuthenticated);
 
   return (
     <div>
@@ -36,7 +40,7 @@ function App() {
           path="/" 
           element={token ? <Home /> : <Navigate to={"/benefits"} />} 
         />
-        
+        <Route exact path="/blogs" element={<Blogs />} />
         <Route exact path="/about" element={<About />} />
         <Route exact path="/contact" element={<Contact />} />
         <Route exact path="/creators" element={<Creators />} />
@@ -46,11 +50,11 @@ function App() {
         <Route exact path="/benefits" element={<BenefitsPage />} />
         <Route exact path="/blog/:id" element={<Detail />} />
         <Route exact path="/blog/update/:id" element={<UpdateBlog />} />
+        <Route exact path="/notes" element={token ? <Notespage /> : <Navigate to="/login" />} />
+        
       </Routes>
       <Toaster />
       {!hideNavbarFooter && <Footer />}
-      {isAuthenticated && <Chatbot />} 
- {/* Chatbot appears only after login */}
     </div>
   );
 }
